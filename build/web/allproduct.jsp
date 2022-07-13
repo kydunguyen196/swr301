@@ -200,19 +200,13 @@
                                         </a>
                                     </li>
                                     <li class="sidebar-submenu-item">
-                                        <a href="/mido/admin/addproduct" class="sidebar-submenu-item-link">
+                                        <a href="/mido/admin/updatecategory" class="sidebar-submenu-item-link">
                                             <span>
                                                 Sửa Danh Mục
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="sidebar-submenu-item">
-                                        <a href="" class="sidebar-submenu-item-link">
-                                            <span>
-                                                Xóa Danh Mục
-                                            </span>
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
                             
@@ -229,14 +223,22 @@
                                 </div>
                                 <ul class="sidebar-submenu">
                                     <li class="sidebar-submenu-item">
-                                        <a href="" class="sidebar-submenu-item-link">
+                                        <a href="/mido/admin/lockaccount" class="sidebar-submenu-item-link">
                                             <span>
-                                                Xóa User 
+                                                Khóa Tài Khoản
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-submenu-item">
+                                        <a href="/mido/admin/unlock" class="sidebar-submenu-item-link">
+                                            <span>
+                                               Mở Khóa Tài Khoản
                                             </span>
                                         </a>
                                     </li>
 
                                 </ul>
+
                             </li>
                         </ul>
                     </div>

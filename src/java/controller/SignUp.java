@@ -61,7 +61,7 @@ public class SignUp extends HttpServlet {
                 doGet(req, resp);
                 return;
             }
-            User user = new User(0, username, StringHelper.toSHA256(password), null, null, null, "img/default.jpg", role, null, null, null, -1, null);
+            User user = new User(0, username, StringHelper.toSHA256(password), null, null, null, "img/default.jpg", role, null, null, null, -1, null, 0);
             userDao.insert(user);
             CartDao cartDao = new CartDao();
             cartDao.insert(new Cart(0, userDao.getByUsername(username).getUserID(), 0));

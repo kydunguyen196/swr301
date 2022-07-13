@@ -122,7 +122,7 @@ public class AddProduct extends HttpServlet {
         
         try {
             ProductDao productDao = new ProductDao();
-            productDao.insert(new Product(0, null, productName, price, 0, productDesc, getFile("image", req), categoryID, 0, 0, 0, 0, brand, country, quantity));
+            productDao.insert(new Product(0, null, productName, price, 0, productDesc, getFile("image", req), categoryID, 1, 1, 1, 0, brand, country, quantity));
             int productID = productDao.getProductID();
             ProductDetailDao productDetailDao = new ProductDetailDao();
             productDetailDao.insert(new ProductDetail(0, productID, subgroupName1, subgroupName2, subgroupValue1, subgroupValue2, fileName, subgroupPrice, subgroupQuantity));

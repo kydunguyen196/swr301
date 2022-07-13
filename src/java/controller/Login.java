@@ -54,6 +54,14 @@ public class Login extends HttpServlet {
                 if (user == null) {
                     user = userDao.get(username);
                 }
+                if (user.getIsActive() == 1) {
+                    req.setAttribute("active", "");
+                    req.setAttribute("isExist", !check);
+                    req.setAttribute("username", username);
+                    req.setAttribute("password", password);
+                    doGet(req, resp);
+                    return;
+                }
                 CartDao cartDao = new CartDao();
                 Cart cart = cartDao.getByUserID(user.getUserID());
                 CartDetailDao cartDetailDao = new CartDetailDao();
@@ -64,13 +72,13 @@ public class Login extends HttpServlet {
                 Cookie cookie3 = new Cookie("image", user.getImg());
                 if (!"0".equals(cartNumber)) {
                     Cookie cookie4 = new Cookie("cart_number", cartNumber);
-                    cookie4.setMaxAge(10000);
+                    cookie4.setMaxAge(100000);
                     resp.addCookie(cookie4);
 
                 }
-                cookie1.setMaxAge(10000);
-                cookie2.setMaxAge(10000);
-                cookie3.setMaxAge(10000);
+                cookie1.setMaxAge(100000);
+                cookie2.setMaxAge(100000);
+                cookie3.setMaxAge(100000);
                 resp.addCookie(cookie1);
                 resp.addCookie(cookie2);
                 resp.addCookie(cookie3);

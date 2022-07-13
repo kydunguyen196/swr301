@@ -116,6 +116,9 @@ public class Profile extends HttpServlet {
         String phoneNumber = req.getParameter("phonenumber");
         String image =  getFile("file", req);
         if((user.getEmail()==null || !user.getEmail().equals(email)) && userDao.get(email)!=null) {
+            req.setAttribute("name", name);
+            req.setAttribute("address", address);
+            req.setAttribute("phoneNumber", phoneNumber);
             req.setAttribute("email", email==null?"":email);
             doGet(req, resp);
             return;

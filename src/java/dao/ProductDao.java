@@ -150,11 +150,11 @@ public class ProductDao extends BaseDao<Product>{
 
     @Override
     public int insert(Product obj) {
-        String query = "INSERT INTO " + tableName + "(productName, price, [desc], image, categoryID, brand, country, quantity) VALUES(?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO " + tableName + "(productName, price, [desc], image, categoryID, brand, country, quantity, discountID, rate) VALUES(?,?,?,?,?,?,?,?,?,?)";
         int num = 0;
         try {
             PreparedStatement ps = createPreparedStatement(query, obj.getProductName(), obj.getPrice(),  obj.getDesc(),
-                    obj.getImage(), obj.getCategoryID(), obj.getBrand(), obj.getCountry(), obj.getQuantity());
+                    obj.getImage(), obj.getCategoryID(), obj.getBrand(), obj.getCountry(), obj.getQuantity(), obj.getDiscountID(), obj.getRate());
             num = ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -164,7 +164,19 @@ public class ProductDao extends BaseDao<Product>{
 
     @Override
     public int update(Product obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String query = "UPDATE " + tableName + " SET productName = ?, [price] = ?, [weight] = ?, [desc] = ?, [image] = ?, [categoryID] = ?, "
+                + "[discountID] = ?, [rate] = ?, [brand] = ?, [country] = ?, [quantity] = ? "
+                + "where productID = ?";
+        int num = 0;
+        try {
+            PreparedStatement ps = createPreparedStatement(query, obj.getProductName(), obj.getPrice(), obj.getWeight(), obj.getDesc(),
+                    obj.getImage(), obj.getCategoryID(), obj.getDiscountID(), obj.getRate(), 
+                    obj.getBrand(), obj.getCountry(), obj.getQuantity(), obj.getProductId());
+            num = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return num;
     }
 
     @Override

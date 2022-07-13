@@ -104,7 +104,8 @@
                     document.getElementsByClassName('notify-bellow')[0].innerHTML = 'Email này không tồn tại';
             } else if (step === 2) {
                 document.getElementsByName('otp')[0].value = '${otp}';
-                document.getElementsByClassName('notify-bellow')[0].innerHTML = 'OTP không chính xác';
+                if(document.getElementsByName('otp')[0].value !== '')
+                    document.getElementsByClassName('notify-bellow')[0].innerHTML = 'OTP không chính xác';
             } else {
                 document.getElementsByName('password')[0].value = '${password}';
             }

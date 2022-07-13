@@ -31,9 +31,9 @@
             <header class="header">
                 <nav class="header-navbar container">
                     <ul class="header-navbar__list">
-                        <li class="header-navbar__item">Kênh người bán</li>
-                        <li class="header-navbar__item header__navbar-item--separate">Trở thành người bán Mido</li>
-                        <li class="header-navbar__item header__navbar-item--separate">Tải ứng dụng</li>
+                        <li class="header-navbar__item header-navbar__item--hoverable">Kênh người bán</li>
+                        <li class="header-navbar__item header__navbar-item--separate header-navbar__item--hoverable">Trở thành người bán Mido</li>
+                        <li class="header-navbar__item header__navbar-item--separate header-navbar__item--hoverable">Tải ứng dụng</li>
                         <li class="header-navbar__item header__navbar-item--separate">
                             <span class="header__navbar-title">Kết nối</span>
                             <a href="" class="header__navbar-icon-link">
@@ -46,13 +46,13 @@
 
                     </ul>
                     <ul class="header-navbar__list">
-                        <li class="header-navbar__item">
+                        <li class="header-navbar__item header-navbar__item--hoverable">
                             <a href="#" class="header-navbar__item-link">
                                 <i class="right-icon fa-solid fa-bell"></i>
                                 Thông báo
                             </a>
                         </li>
-                        <li class="header-navbar__item">
+                        <li class="header-navbar__item header-navbar__item--hoverable">
 
                             <a href="help" class="header-navbar__item-link">
                                 <i class="right-icon fa-solid fa-circle-question"></i>
@@ -60,24 +60,23 @@
                             </a>
                         </li>
                         <c:if test="${cookie.username.value == null}">
-                            <li class="header-navbar__item">
+                            <li class="header-navbar__item header-navbar__item--hoverable">
                                 <a href="signup" class="header-navbar__item-link">Đăng ký</a>
                             </li>
                             <div class="navbar__item-separator"></div>
-                            <li class="header-navbar__item">
+                            <li class="header-navbar__item header-navbar__item--hoverable">
                                 <a href="login" class="header-navbar__item-link">Đăng nhập</a>
                             </li>
                         </c:if>
 
                         <c:if test="${cookie.username.value != null}">
-                            <li class="header-navbar__item header-navbar__user">
-                                <img src="${user.getImg()}" alt=""
-                                     class="header__navbar-user-img">
-                                <a href="profile"
-                                   class="header-navbar__item-link header__navbar-user-name">${cookie.username.value}</a>
+                            <li class="header-navbar__item header-navbar__user header-navbar__item--hoverable">
+                                <img src="${user.getImg()}"
+                                     alt="" class="header__navbar-user-img">
+                                <a href="profile" class="header-navbar__item-link header__navbar-user-name">${cookie.username.value}</a>
                             </li>
-                            <li class="header-navbar__item">
-                                <a href="logout" class="header-navbar__item-link">Đăng xuất</a>
+                            <li class="header-navbar__item header-navbar__item--hoverable">
+                                <a href="logout" class="header-navbar__item-link">Đăng xuất</a>     
                             </li>
                         </c:if>
                     </ul>
@@ -172,9 +171,9 @@
                                     <a class="FEE-3D" href="/mido/profile">
                                         <span class="qyt-aY" style="color: #ee4d2d;">Hồ sơ</span>
                                     </a>
-<!--                                    <a class="FEE-3D" href="/mido/profile/address">
-                                        <span class="qyt-aY">Địa chỉ</span>
-                                    </a>-->
+                                    <!--                                    <a class="FEE-3D" href="/mido/profile/address">
+                                                                            <span class="qyt-aY">Địa chỉ</span>
+                                                                        </a>-->
                                     <a class="FEE-3D" href="/mido/profile/changepassword">
                                         <span class="qyt-aY">Đổi mật khẩu</span>
                                     </a>
@@ -230,7 +229,7 @@
                                                 <div class="form-item__input">
                                                     <div style="width:100%">
                                                         <div class="form-item__input-with-validator">
-                                                            <input name="name" type="text" placeholder="" maxlength="255" value="${user.getFullName()}">
+                                                            <input name="name" type="text" placeholder="" maxlength="255" value="${user.getFullName()}${name}">
                                                         </div>
                                                         <div class="notify-bellow">
 
@@ -248,7 +247,7 @@
                                                 <div class="form-item__input">
                                                     <div style="width:100%">
                                                         <div class="form-item__input-with-validator">
-                                                            <input name="email" type="email" placeholder="" maxlength="255" value="${user.getEmail()}">
+                                                            <input name="email" type="email" placeholder="" maxlength="255" value="${user.getEmail()}${email}">
                                                         </div>
                                                         <div class="notify-bellow">
                                                             <c:if test="${email!=null}">
@@ -270,7 +269,7 @@
                                                 <div class="form-item__input">
                                                     <div style="width:100%">
                                                         <div class="form-item__input-with-validator">
-                                                            <input type="tel" name="phonenumber" placeholder="" maxlength="20" value="${user.getTelephone()}">
+                                                            <input pattern="[0-9]{10}" type="tel" name="phonenumber" placeholder="" maxlength="20" value="${user.getTelephone()}${phoneNumber}">
                                                         </div>
                                                         <div class="notify-bellow">
 
@@ -290,7 +289,7 @@
                                                 <div class="form-item__input">
                                                     <div style="width:100%">
                                                         <div class="form-item__input-with-validator">
-                                                            <input type="text" name="address" placeholder="" maxlength="300" value="${user.getAddress()}">
+                                                            <input type="text" name="address" placeholder="" maxlength="300" value="${user.getAddress()}${address}">
                                                         </div>
                                                         <div class="notify-bellow">
 
@@ -633,7 +632,7 @@
 
         <script>
 
-            
+
 
         </script>
     </body>

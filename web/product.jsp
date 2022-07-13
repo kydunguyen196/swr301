@@ -198,13 +198,13 @@
                                 <div class="vote-section">
                                     <div class="vote-wrapper">
                                         <div class="vote-number">
-                                            4.5
+                                            ${rate}
                                         </div>
                                         <div class="vote-start-section">
                                             <div class="mido-rating-stars">
                                                 <div class="mido-rating-stars__stars">
                                                     <div class="mido-rating-stars__star-wrapper">
-                                                        <div class="mido-rating-stars__lit" style="width: 100%;">
+                                                        <div class="mido-rating-stars__lit" style="width: ${starPercent1}%;">
                                                             <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
                                                                  y="0" class="mido-rating-stars__primary-star">
                                                             <polygon
@@ -222,7 +222,7 @@
                                                         </svg>
                                                     </div>
                                                     <div class="mido-rating-stars__star-wrapper">
-                                                        <div class="mido-rating-stars__lit" style="width: 100%;">
+                                                        <div class="mido-rating-stars__lit" style="width: ${starPercent2}%;">
                                                             <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
                                                                  y="0" class="mido-rating-stars__primary-star">
                                                             <polygon
@@ -240,7 +240,7 @@
                                                         </svg>
                                                     </div>
                                                     <div class="mido-rating-stars__star-wrapper">
-                                                        <div class="mido-rating-stars__lit" style="width: 100%;">
+                                                        <div class="mido-rating-stars__lit" style="width: ${starPercent3}%;">
                                                             <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
                                                                  y="0" class="mido-rating-stars__primary-star">
                                                             <polygon
@@ -258,7 +258,7 @@
                                                         </svg>
                                                     </div>
                                                     <div class="mido-rating-stars__star-wrapper">
-                                                        <div class="mido-rating-stars__lit" style="width: 100%;">
+                                                        <div class="mido-rating-stars__lit" style="width: ${starPercent4}%;">
                                                             <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
                                                                  y="0" class="mido-rating-stars__primary-star">
                                                             <polygon
@@ -276,7 +276,7 @@
                                                         </svg>
                                                     </div>
                                                     <div class="mido-rating-stars__star-wrapper">
-                                                        <div class="mido-rating-stars__lit" style="width: 50%;">
+                                                        <div class="mido-rating-stars__lit" style="width: ${starPercent5}%;">
                                                             <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0"
                                                                  y="0" class="mido-rating-stars__primary-star">
                                                             <polygon
@@ -298,22 +298,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="vote-wrapper">
+                                    <div class="vote-wrapper" style="border:0;">
                                         <div class="rate-number">
-                                            43
+                                            ${no_of_voting}
                                         </div>
                                         <div class="vote-start-section">
                                             Đánh Giá
                                         </div>
                                     </div>
-                                    <div class="sold-wrapper">
+<!--                                    <div class="sold-wrapper">
                                         <div class="sold-number">
                                             13
                                         </div>
                                         <div class="sold-text">
                                             Đã bán
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
 
                                 <div style="margin-top: 10px;">

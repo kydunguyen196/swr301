@@ -24,11 +24,12 @@ public class User {
     private String dob;
     private int gender;
     private String address;
+    private int isActive;
 
     public User() {
     }
 
-    public User(int userID, String username, String password, String email, String telephone, String fullName, String img, int role, String otp, Date otpRequestTime, String dob, int gender, String address) {
+    public User(int userID, String username, String password, String email, String telephone, String fullName, String img, int role, String otp, Date otpRequestTime, String dob, int gender, String address, int isActive) {
         this.userID = userID;
         this.username = username;
         this.password = password;
@@ -42,6 +43,7 @@ public class User {
         this.dob = dob;
         this.gender = gender;
         this.address = address;
+        this.isActive = isActive;
     }
 
     public int getUserID() {
@@ -147,6 +149,16 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public int getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
+    }
+
+    
 
     
    

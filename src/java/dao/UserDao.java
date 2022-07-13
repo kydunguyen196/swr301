@@ -45,13 +45,13 @@ public class UserDao extends BaseDao<User> {
     public int update(User obj) {
         String query = "UPDATE " + tableName + " SET username = ?, password = ?, email = ?, telephone = ?, "
                 + "fullName = ?, img = ?, role = ?, "
-                + "one_time_password = ?, otp_request_time = ?, dob = ?, gender = ?, address = ?"
+                + "one_time_password = ?, otp_request_time = ?, dob = ?, gender = ?, address = ?, isactive = ? "
                 + " WHERE userID = ?";
         int num = 0;
         try {
             PreparedStatement ps = createPreparedStatement(query, obj.getUsername(), obj.getPassword(), obj.getEmail(), obj.getTelephone(),
                     obj.getFullName(), obj.getImg(), obj.getRole(), obj.getOtp(), obj.getOtpRequestTime(), obj.getDob(), 
-                    obj.getGender(), obj.getAddress(), obj.getUserID());
+                    obj.getGender(), obj.getAddress(), obj.getIsActive(), obj.getUserID());
             num = ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,7 +82,7 @@ public class UserDao extends BaseDao<User> {
             while (rs.next()) {
                 User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
                         rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), 
-                        rs.getDate(10), rs.getString(11), rs.getInt(12), rs.getString(13));
+                        rs.getDate(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getInt(14));
                 list.add(user);
             }
         } catch (SQLException ex) {
@@ -113,7 +113,7 @@ public class UserDao extends BaseDao<User> {
             while (rs.next()) {
                User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
                         rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), 
-                        rs.getDate(10), rs.getString(11), rs.getInt(12), rs.getString(13));
+                        rs.getDate(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getInt(14));
                 return user;
             }
         } catch (SQLException ex) {
@@ -131,7 +131,7 @@ public class UserDao extends BaseDao<User> {
             while (rs.next()) {
                 User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
                         rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), 
-                        rs.getDate(10), rs.getString(11), rs.getInt(12), rs.getString(13));
+                        rs.getDate(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getInt(14));
                 return user;
             }
         } catch (SQLException ex) {
@@ -149,7 +149,7 @@ public class UserDao extends BaseDao<User> {
             while (rs.next()) {
                 User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
                         rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), 
-                        rs.getDate(10), rs.getString(11), rs.getInt(12), rs.getString(13));
+                        rs.getDate(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getInt(14));
                 return user;
             }
         } catch (SQLException ex) {

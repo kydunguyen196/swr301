@@ -261,7 +261,9 @@
                                     <label class="stardust-checkbox">
                                         <input class="stardust-checkbox__input checkbox-for-all" type="checkbox">
                                     </label>
+                                    
                                 </div>
+
                                 <div class="flex">
                                     <div class="final-total-price-section">
                                         <div class="final-total-price-section__label">
@@ -560,11 +562,11 @@
                 decreaseButtons[i].onclick = function (event) {
                     let item = document.getElementsByClassName('input-product-quantity')[i];
 //                    if (item.value !== '1') {
-                        item.value = (parseInt(item.value) - 1) + '';
-                        document.getElementsByName('product_id')[0].value = productArrId[i] + '';
-                        document.getElementsByName('form_quantity')[0].value = '-1';
-                        document.getElementsByName('value1')[0].value = index1Arr[i] + '';
-                        document.getElementsByName('value2')[0].value = index2Arr[i] + '';
+                    item.value = (parseInt(item.value) - 1) + '';
+                    document.getElementsByName('product_id')[0].value = productArrId[i] + '';
+                    document.getElementsByName('form_quantity')[0].value = '-1';
+                    document.getElementsByName('value1')[0].value = index1Arr[i] + '';
+                    document.getElementsByName('value2')[0].value = index2Arr[i] + '';
 //                    } else
 //                        event.preventDefault();
                 };

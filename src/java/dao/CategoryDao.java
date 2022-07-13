@@ -78,7 +78,16 @@ public class CategoryDao extends BaseDao<Category> {
 
     @Override
     public int update(Category obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String query = "UPDATE " + tableName + " SET [categoryName] = ?, [img] = ?, [link] = ?, [parentID] = ? "
+                + " where [categoryID] = ?";
+        int num = 0;
+        try {
+            PreparedStatement ps = createPreparedStatement(query, obj.getName(), obj.getImage(), obj.getLink(), obj.getParentID(), obj.getId());
+            num = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return num;
     }
 
     @Override

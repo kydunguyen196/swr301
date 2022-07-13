@@ -1,5 +1,6 @@
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -56,13 +57,20 @@
                     </div>
 
                     <div class="form__body">
-                        <div id="wrong-account">
-                            Tài khoản hoặc mật khẩu đăng nhập không chính xác. Vui lòng nhấn “Quên?” để đặt lại mật khẩu mới.
-                        </div>
+                        <c:if test="${active == null}">
+                            <div id="wrong-account">
+                                Tài khoản hoặc mật khẩu đăng nhập không chính xác. Vui lòng nhấn “Quên?” để đặt lại mật khẩu mới.
+                            </div>
+                        </c:if>
+                        <c:if test="${active != null}">
+                            <div id="wrong-account">
+                                Tài khoản của bạn đã bị khóa.
+                            </div>
+                        </c:if>
                         <div class="input-text-container">
                             <div class="input-text-wrapper">
                                 <input class="input-text" type="username" placeholder="Email / Tên đăng nhập" autocomplete="on" name="username" required>
-                                       value="">
+                                value="">
                             </div>
                             <div class="notify-bellow">
 
@@ -96,14 +104,14 @@
         </div>
 
         <script>
-            
+
             <% if (request.getAttribute("isExist") != null && request.getAttribute("isExist").equals(false)) { %>
-                document.getElementById('wrong-account').style.display = 'block';
-                document.getElementsByName('username')[0].value = "${username}";
-                document.getElementsByName('password')[0].value = "${password}";
-            <% } %>
-            
-            
+            document.getElementById('wrong-account').style.display = 'block';
+            document.getElementsByName('username')[0].value = "${username}";
+            document.getElementsByName('password')[0].value = "${password}";
+            <% }%>
+
+
         </script>
     </body>
 

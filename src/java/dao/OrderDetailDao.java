@@ -64,6 +64,46 @@ public class OrderDetailDao extends BaseDao<OrderDetail>{
         
         return list;
     }
+    
+    public List<OrderDetail> getAllByProductId(int productID) {
+        String query = "select * from " + tableName + " where productID = ? order by id desc";
+        List<OrderDetail> list = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, productID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                OrderDetail orderDetail = new OrderDetail(rs.getInt(1), rs.getInt(2), rs.getInt(3),
+                        rs.getInt(4), rs.getString(5), rs.getString(6), rs.getDouble(7), 
+                        rs.getString(8), rs.getString(9));
+                list.add(orderDetail);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return list;
+    }
+    
+    public List<OrderDetail> getAllByStatus(String status) {
+        String query = "select * from " + tableName + " where status like ? order by id desc";
+        List<OrderDetail> list = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, status);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                OrderDetail orderDetail = new OrderDetail(rs.getInt(1), rs.getInt(2), rs.getInt(3),
+                        rs.getInt(4), rs.getString(5), rs.getString(6), rs.getDouble(7), 
+                        rs.getString(8), rs.getString(9));
+                list.add(orderDetail);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return list;
+    }
 
     @Override
     public int insert(OrderDetail obj) {
@@ -111,7 +151,7 @@ public class OrderDetailDao extends BaseDao<OrderDetail>{
 
     @Override
     public OrderDetail get(int id) {
-        String query = "select * from [[Order_Details_HE163037]] where id = ?";
+        String query = "select * from [Order_Details_HE163037] where id = ?";
         try {
             PreparedStatement ps = createPreparedStatement(query, id);
             ResultSet rs = ps.executeQuery();

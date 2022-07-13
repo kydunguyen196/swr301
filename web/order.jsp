@@ -203,36 +203,35 @@
                 <div class="body-right">
                     <div class="body-right__main">
                         <div class="body-right__main__header">
-                            <a class="purchase-header-item selected-header-item" href="/mido/order?type=1">
-                                Tất cả
-                            </a>
-                            <a class="purchase-header-item" href="/mido/order?type=2">
-                                Chờ xác nhận
-                            </a>
-                            <a class="purchase-header-item" href="/mido/order?type=3">
-                                Chờ lấy hàng
-                            </a>
-                            <a class="purchase-header-item" href="/mido/order?type=4">
-                                Đang giao
-                            </a>
-                            <a class="purchase-header-item" href="/mido/order?type=5">
-                                Đã giao
-                            </a>
-                            <a class="purchase-header-item" href="/mido/order?type=6">
-                                Đã Hủy
-                            </a>
-                        </div>
-                        <div>
+                            <a class="purchase-header-item <c:if test="${param.type == null || param.type == 1}">selected-header-item</c:if>" href="/mido/order?type=1">
+                                    Tất cả
+                                </a>
+                                <a class="purchase-header-item <c:if test="${param.type == 2}">selected-header-item</c:if>" href="/mido/order?type=2">
+                                    Chờ xác nhận
+                                </a>
+                                <a class="purchase-header-item <c:if test="${param.type == 3}">selected-header-item</c:if>" href="/mido/order?type=3">
+                                    Đang giao
+                                </a>
+                                <a class="purchase-header-item <c:if test="${param.type == 4}">selected-header-item</c:if>" href="/mido/order?type=4">
+                                    Đã giao
+                                </a>
+                                <a class="purchase-header-item <c:if test="${param.type == 5}">selected-header-item</c:if>" href="/mido/order?type=5">
+                                    Đã Hủy
+                                </a>
+                            </div>
+                            <div>
                             <c:forEach var="product" items="${productList}" varStatus="loop">
                                 <div class="order-product-wrapper">
                                     <div>
                                         <div class="order-product">
                                             <div class="order-product__header">
+
                                                 <div class="order-product__status">
                                                     <div class="order-product__status-text">
                                                         ${orderDetails.get(loop.index).getStatus()}
                                                     </div>
                                                 </div>
+
                                             </div>
                                             <div style="border-bottom: 1px solid rgba(0,0,0,.09);">
 
@@ -295,7 +294,29 @@
                                         </div>
                                         <div class="purchase-button-wrapper__right">
                                             <div class="_8vTqu9">
-                                                <button class="purchase-button">Mua lại</button>
+                                                <c:set var="status1" value="chờ xác nhận"></c:set>
+                                                <c:set var="status2" value="đang giao hàng"></c:set>
+                                                <c:set var="status3" value="đã giao"></c:set>
+                                                <c:set var="status4" value="đã hủy"></c:set>
+
+                                                <c:if test="${orderDetails.get(loop.index).getStatus().toLowerCase() == status1}">
+                                                    <form action="/mido/updateorder" method="post">
+                                                        <input type="hidden" name="cancel" value="${orderDetails.get(loop.index).getId()}">
+                                                        <button class="purchase-button">Hủy đơn hàng</button>
+                                                    </form>
+                                                </c:if>
+                                                <c:if test="${orderDetails.get(loop.index).getStatus().toLowerCase() == status2}">
+                                                    <form action="/mido/updateorder" method="post">
+                                                        <input type="hidden" name="done" value="${orderDetails.get(loop.index).getId()}">
+                                                        <button type="submit" class="purchase-button">Đã nhận được hàng</button>
+                                                    </form>
+                                                </c:if>
+                                                <c:if test="${orderDetails.get(loop.index).getStatus().toLowerCase() == status3}">
+                                                    <button name="${orderDetails.get(loop.index).getId()}" value="${product.getProductId()}" class="purchase-button rate-button">Đánh giá</button>
+                                                </c:if>
+                                                <c:if test="${orderDetails.get(loop.index).getStatus().toLowerCase() == status4}">
+                                                    <button  class="purchase-button">Mua lại</button>
+                                                </c:if>
                                             </div>
                                         </div>
                                     </div>
@@ -546,28 +567,54 @@
             </footer>
         </div>
 
+        <div id="modal" style="display:none;">
+            <div>
+                <div class="mido-popup">
+                    <div class="mid-popup__overlay">
+                        <div class="mido-popup__container">
+                            <div class="mido-alert-popup">
+                                <div class="mido-alert-popup__message">
+                                    Đánh giá sản phẩm:
+                                    <form style="display:inline" id="rate-form" action="/mido/rate" method="post">
+                                        <input type="hidden" name="productid">
+                                        <input type="hidden" name="orderdetailid">
+                                        <select name="star" style="color:#ee4d2d;text-align: center;padding: 4px 8px;margin: 0 12px 0 12px;min-width: 5rem;">
+                                            <option value="5">5</option>
+                                            <option value="4">4</option>
+                                            <option value="3">3</option>
+                                            <option value="2">2</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </form>
+                                    <span style="color:#ee4d2d;">sao</span>
+                                </div>
+                                <div class="mido-alert-popup__button-horizontal-layout">
+
+
+
+                                    <button type="submit" form="rate-form" class="mido-button-solid mido-button-solid--primary">Đánh giá</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <script>
 
-            document.getElementById("year").value = parseInt('${user.getDob().substring(0, 4)}');
-            document.getElementById("month").value = parseInt('${user.getDob().substring(5, 7)}');
-            document.getElementById("day").value = parseInt('${user.getDob().substring(8, 10)}');
-            if (document.getElementById("year").value.length === 0)
-                document.getElementById("year").value = 2022;
-            if (document.getElementById("month").value.length === 0)
-                document.getElementById("month").value = 1;
-            if (document.getElementById("day").value.length === 0)
-                document.getElementById("day").value = 1;
+            var ratebutton = document.getElementsByClassName('rate-button');
 
-            document.getElementById('form').onsubmit = (e) => {
-                let input = document.getElementsByTagName('input');
-                let notify = document.getElementsByClassName('notify-bellow');
-                for (let i = 1; i < 5; i++) {
-                    if (input[i].value === '') {
-                        notify[i - 1].innerHTML = 'Không được để trống';
-                        e.preventDefault();
-                    }
-                }
-            };
+            for (let i = 0; i < ratebutton.length; i++) {
+                ratebutton[i].onclick = (e) => {
+                    document.getElementById('modal').style.display = 'block';
+                    document.getElementsByName('productid')[0].value = ratebutton[i].value;
+                    document.getElementsByName('orderdetailid')[0].value = ratebutton[i].name;
+                };
+            }
+
 
         </script>
     </body>

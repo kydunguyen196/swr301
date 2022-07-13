@@ -65,8 +65,22 @@ public class OrderServlet extends HttpServlet {
             orderList = orderDao.getAllByUserId(user.getUserID());
             for (Order order : orderList) {
                 OrderDetailDao orderDetailDao = new OrderDetailDao();
-                List<OrderDetail> orderDetailList = orderDetailDao.getAllByOrderId(order.getOrderID());
-                orderDetails.addAll(orderDetailList);
+                if (type == 1) {
+                    List<OrderDetail> orderDetailList = orderDetailDao.getAllByOrderId(order.getOrderID());
+                    orderDetails.addAll(orderDetailList);
+                } else {
+                    String status="";
+                    if(type==2) status = "chờ xác nhận";
+                    if(type==3) status = "đang giao hàng";
+                    if(type==4) status = "đã giao";
+                    if(type==5) status = "đã hủy";
+                    List<OrderDetail> orderDetailList = orderDetailDao.getAllByOrderId(order.getOrderID());
+                    for(OrderDetail orderDetail: orderDetailList) {
+                        if(orderDetail.getStatus().equalsIgnoreCase(status)) {
+                            orderDetails.add(orderDetail);
+                        }
+                    }
+                }
 
             }
             ProductDao productDao = new ProductDao();

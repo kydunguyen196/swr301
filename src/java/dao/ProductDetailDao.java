@@ -76,12 +76,31 @@ public class ProductDetailDao extends BaseDao<ProductDetail>{
 
     @Override
     public int update(ProductDetail obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String query = "UPDATE " + tableName + " SET [productID] = ?, [subgroupName1] = ?, [subgroupName2] = ?, [subgroupValue1] = ?, [subgroupValue2] = ?, [subgroupImage1] = ?, "
+                + "[price] = ?, [quantity] = ? "
+                + "where id = ?";
+        int num = 0;
+        try {
+            PreparedStatement ps = createPreparedStatement(query, obj.getProductID(), obj.getSubgroupName1(), obj.getSubgroupName2(), 
+                    obj.getSubgroupValue1(), obj.getSubgroupValue2(), obj.getSubgroupImage1(), obj.getPrice(), obj.getQuantity(), obj.getId());
+            num = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return num;
     }
 
     @Override
     public int delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String query = "DELETE FROM " + tableName + " WHERE id = ?";
+        int num = 0;
+        try {
+            PreparedStatement ps = createPreparedStatement(query, id);
+            num =  ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return num;
     }
 
     @Override

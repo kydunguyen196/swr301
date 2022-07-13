@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.User;
+import utility.StringHelper;
 import utility.UserServices;
 
 /**
@@ -110,7 +111,7 @@ public class ForgetPassword extends HttpServlet {
                 }
             }
             user = userDao.get(email);
-            user.setPassword(password);
+            user.setPassword(StringHelper.toSHA256(password));
             try {
                 userDao = new UserDao();
                 userDao.update(user);

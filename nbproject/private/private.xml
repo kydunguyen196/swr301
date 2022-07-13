@@ -3,18 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/src/java/controller/Home.java</file>
+            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/src/java/model/User.java</file>
             <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/src/java/dao/CartDetailDao.java</file>
-            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/src/java/controller/Login.java</file>
-            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/css/search.css</file>
-            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/addproduct_old.jsp</file>
-            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/css/admin.css</file>
+            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/allproduct.jsp</file>
+            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/signup.jsp</file>
+            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/src/java/utility/Captcha.java</file>
+            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/src/java/controller/UpdateCategory.java</file>
             <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/src/java/controller/AddCategory.java</file>
             <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/src/java/dao/CategoryDao.java</file>
-            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/addcategory.jsp</file>
-            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/index.jsp</file>
-            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/css/addcategory.css</file>
-            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/css/addproduct_old.css</file>
+            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/admin.jsp</file>
+            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/src/java/controller/SignUp.java</file>
+            <file>file:/C:/Users/Mido/Documents/NetBeansProjects/MuaItThoi/web/updatecategory.jsp</file>
         </group>
     </open-files>
 </project-private>

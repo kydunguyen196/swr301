@@ -102,7 +102,7 @@
                     <div class="header-with-search__seach-section">
                         <div class="mido-searchbar">
                             <div class="mido-searchbar__main">
-                                <form id="search-form" action="search" class="mido-searchbar-input" method="get"
+                                <form id="search-form" action="/mido/search" class="mido-searchbar-input" method="get"
                                       autocomplete="off">
                                     <input name="keyword" type="text" aria-label="Tìm kiếm trên Mido"
                                            class="mido-searchbar-input__input" placeholder="Tìm kiếm trên Mido"

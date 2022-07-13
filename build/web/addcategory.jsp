@@ -22,7 +22,7 @@
             <!-- header -->
             <header class="admin-header-bar">
                 <div class="admin-header-content">
-                    <a href="" class="header-with-search__logo-section">
+                    <a href="/mido/admin" class="header-with-search__logo-section">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.26 318.9">
                         <path
                             d="M384.32,72.29,337.53,54.71l-6.95,11.53V264.15l6.95,12.13,46.79-13.51,4.94-13.12V85.85Zm-14,152.7h0a9.11,9.11,0,0,1-6.94,5.5h0a9.12,9.12,0,0,1-9.64-4.92h0a29.72,29.72,0,0,1-3.15-13.32V118.93a24.75,24.75,0,0,1,2.82-11.47h0a9.12,9.12,0,0,1,10.31-4.62l.15,0a9.16,9.16,0,0,1,6.25,5.46h0a52.47,52.47,0,0,1,3.77,19.52v79.29A46.57,46.57,0,0,1,370.34,225Z"
@@ -117,26 +117,13 @@
                                 </div>
                                 <ul class="sidebar-submenu">
                                     <li class="sidebar-submenu-item">
-                                        <a href="" class="sidebar-submenu-item-link">
+                                        <a href="/mido/admin/order" class="sidebar-submenu-item-link">
                                             <span>
                                                 Tất Cả
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="sidebar-submenu-item">
-                                        <a href="" class="sidebar-submenu-item-link">
-                                            <span>
-                                                Đơn Hủy
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-submenu-item">
-                                        <a href="" class="sidebar-submenu-item-link">
-                                            <span>
-                                                Trả Hàng/Hoàn Tiền
-                                            </span>
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
 
@@ -152,13 +139,7 @@
                                     <i class=" fa-solid fa-angle-up"></i>
                                 </div>
                                 <ul class="sidebar-submenu">
-                                    <li class="sidebar-submenu-item">
-                                        <a href="/mido/admin/allproduct" class="sidebar-submenu-item-link">
-                                            <span>
-                                                Tất Cả Sản Phẩm
-                                            </span>
-                                        </a>
-                                    </li>
+                                    
                                     <li class="sidebar-submenu-item">
                                         <a href="/mido/admin/addproduct" class="sidebar-submenu-item-link">
                                             <span>
@@ -167,9 +148,16 @@
                                         </a>
                                     </li>
                                     <li class="sidebar-submenu-item">
-                                        <a href="" class="sidebar-submenu-item-link">
+                                        <a href="/mido/admin/updateproduct?type=1" class="sidebar-submenu-item-link">
                                             <span>
                                                 Sửa Sản Phẩm
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-submenu-item">
+                                        <a href="/mido/admin/updateproduct?type=2" class="sidebar-submenu-item-link">
+                                            <span>
+                                                Xóa Sản Phẩm
                                             </span>
                                         </a>
                                     </li>
@@ -196,19 +184,13 @@
                                         </a>
                                     </li>
                                     <li class="sidebar-submenu-item">
-                                        <a href="/mido/admin/addproduct" class="sidebar-submenu-item-link">
+                                        <a href="/mido/admin/updatecategory" class="sidebar-submenu-item-link">
                                             <span>
                                                 Sửa Danh Mục
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="sidebar-submenu-item">
-                                        <a href="" class="sidebar-submenu-item-link">
-                                            <span>
-                                                Xóa Danh Mục
-                                            </span>
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
 
@@ -225,9 +207,16 @@
                                 </div>
                                 <ul class="sidebar-submenu">
                                     <li class="sidebar-submenu-item">
-                                        <a href="" class="sidebar-submenu-item-link">
+                                        <a href="/mido/admin/lockaccount" class="sidebar-submenu-item-link">
                                             <span>
-                                                Xóa User
+                                                Khóa Tài Khoản
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-submenu-item">
+                                        <a href="/mido/admin/unlock" class="sidebar-submenu-item-link">
+                                            <span>
+                                               Mở Khóa Tài Khoản
                                             </span>
                                         </a>
                                     </li>
@@ -278,7 +267,7 @@
                                 <div class="flex items-center">
                                     <button type="submit" class="product-button" style="width: 115px;">
                                         <span>
-                                            Submit
+                                            Thêm
                                         </span>
                                     </button>
                                 </div>
