@@ -34,6 +34,7 @@ public class ProductPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int productID = Integer.parseInt(req.getParameter("id"));
+        
         ProductDao productDao = null;
         CategoryDao categoryDao = null;
         Product product = null;
@@ -49,6 +50,7 @@ public class ProductPage extends HttpServlet {
             category = categoryDao.get(product.getCategoryID());
             ProductDetailDao productDetailDao = new ProductDetailDao();
             productDetail = productDetailDao.getByProductID(productID);
+            productDao.updatView(productID);
             req.setAttribute("quantity", productDetailDao.getQuantity(productDetail.getId()));
         } catch (Exception ex) {
             Logger.getLogger(ProductPage.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,6 +90,7 @@ public class ProductPage extends HttpServlet {
         double[] price = StringHelper.getDoubleArr(productDetail.getPrice(), "\\|");
         int[] quantity = StringHelper.getIntArr(productDetail.getQuantity(), "\\|");
         String[] imageArr = productDetail.getSubgroupImage1().split("\\|");
+        
         req.setAttribute("rate", rate);
         req.setAttribute("priceArr", price);
         req.setAttribute("quantityArr", quantity);

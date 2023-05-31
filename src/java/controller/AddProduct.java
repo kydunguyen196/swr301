@@ -45,7 +45,7 @@ import org.apache.commons.io.output.*;
 @MultipartConfig
 public class AddProduct extends HttpServlet {
     String getFile(String name, HttpServletRequest req) throws IOException, ServletException {
-        String filePath = "C:\\Users\\Mido\\Documents\\NetBeansProjects\\MuaItThoi\\web\\img\\";
+        String filePath = "C:\\Users\\Mido\\Documents\\NetBeansProjects\\MidoShop\\web\\img\\";
         Part filePart = req.getPart(name);
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         if(fileName == null || fileName.length()==0)

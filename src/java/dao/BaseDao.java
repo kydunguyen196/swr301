@@ -25,7 +25,7 @@ public abstract class BaseDao<T> {
     Connection con = null;
     
     public BaseDao() throws Exception {
-        con = new DBContext().getConnection();        
+        con = new DBContext().connection;        
     }
     
     public PreparedStatement createPreparedStatement(String query, Object... params) throws SQLException {

@@ -33,9 +33,10 @@ import model.User;
 @WebServlet(name = "Profile", urlPatterns = {"/profile"})
 @MultipartConfig
 public class Profile extends HttpServlet {
-
+    public static void main(String[] args) {
+    }
     String getFile(String name, HttpServletRequest req) throws IOException, ServletException {
-        String filePath = "C:\\Users\\Mido\\Documents\\NetBeansProjects\\MuaItThoi\\web\\img\\";
+        String filePath = "C:\\Users\\Mido\\Documents\\NetBeansProjects\\MidoShop\\web\\img\\";
         Part filePart = req.getPart(name);
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         if (fileName == null || fileName.length() == 0) {

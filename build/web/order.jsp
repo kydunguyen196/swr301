@@ -10,6 +10,7 @@
 <html>
 
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Mido</title>
@@ -312,8 +313,19 @@
                                                     </form>
                                                 </c:if>
                                                 <c:if test="${orderDetails.get(loop.index).getStatus().toLowerCase() == status3}">
-                                                    <button name="${orderDetails.get(loop.index).getId()}" value="${product.getProductId()}" class="purchase-button rate-button">Đánh giá</button>
+                                                    <c:if test="${order.get(loop.index).getPaymentID()==1}">
+                                                    <form name="f" action="order" method="get"  >                                             
+                                                        
+                                                        <button name="${orderDetails.get(loop.index).getId()}" value="${product.getProductId()}" class="purchase-button rate-button" >Đánh giá</button>
+                                                          
+                                                        
+                                                    </form> 
+                                                      </c:if>      
+                                                          
+                                                    
+                                                        
                                                 </c:if>
+                                                          
                                                 <c:if test="${orderDetails.get(loop.index).getStatus().toLowerCase() == status4}">
                                                     <button  class="purchase-button">Mua lại</button>
                                                 </c:if>

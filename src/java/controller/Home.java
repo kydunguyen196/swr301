@@ -30,7 +30,15 @@ import model.Product;
  */
 @WebServlet(name="Mido", urlPatterns={""})
 public class Home extends HttpServlet {
-
+    public int compareWith(Product p1, Product p2){
+        if(p1.getWeight() > p2.getWeight()){
+            return -1;
+        }else if(p1.getWeight() == p2.getWeight()){
+            return 0;
+        }else {
+            return 1;
+        }
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Product> productList = new ArrayList<>();
@@ -41,7 +49,9 @@ public class Home extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        productList.sort((t, t1) -> {
+            return compareWith(t, t1);
+        });
         List<Category> categoryList = new ArrayList<>();
         try {
             CategoryDao categoryDao = new CategoryDao();

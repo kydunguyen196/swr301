@@ -8,9 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Product;
@@ -18,7 +16,7 @@ import model.Product;
 /**
  *
  * @author Mido
- * @param <Product>
+
  */
 public class ProductDao extends BaseDao<Product>{
     
@@ -226,7 +224,18 @@ public class ProductDao extends BaseDao<Product>{
         }
         return ans;
     }
-    
+    public void updatView(int id ){
+        try {
+            Product p = get(id);
+            Double weight = p.getWeight() +1;
+            String sql ="UPDATE [Products_HE163037] SET [weight]  = " +weight+ " WHERE productID = " + id;
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.executeUpdate();
+            System.out.println("Success");
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public int getSize() {
         int ans = 0;
         String query = "select count(productID) from [Products_HE163037]";
@@ -276,6 +285,11 @@ public class ProductDao extends BaseDao<Product>{
         }
         return ans;
     }
-       
+    public static void main(String[] args) throws Exception {
+        ProductDao p = new ProductDao();
+        p.updatView(1020);
+        
+        
+    }
     
 }

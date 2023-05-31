@@ -255,9 +255,9 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="item-rate">
-
-                                                                            </div>
+                                                                           <div class="item-new-price">
+                                                                                     Viewer: ${product.getWeight()}
+                                                                                 </div><!-- comment -->
 
                                                                             <div class="item-place">
                                                                                 Hà Nội

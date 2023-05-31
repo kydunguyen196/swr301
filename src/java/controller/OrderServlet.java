@@ -72,7 +72,7 @@ public class OrderServlet extends HttpServlet {
                     String status="";
                     if(type==2) status = "chờ xác nhận";
                     if(type==3) status = "đang giao hàng";
-                    if(type==4) status = "đã giao";
+                    if(type==4) {status = "đã giao"; orderDao.updatView(user.getUserID());}
                     if(type==5) status = "đã hủy";
                     List<OrderDetail> orderDetailList = orderDetailDao.getAllByOrderId(order.getOrderID());
                     for(OrderDetail orderDetail: orderDetailList) {

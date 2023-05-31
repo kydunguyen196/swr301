@@ -2,24 +2,39 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
+/**
+ *
+ * @author FPT University - PRJ301
+ */
 public class DBContext {
-    private final String serverName = "localhost";
-    private final String dbName = "Mido_PRJ301_SE1624";
-    private final String portNumber = "1433";
-    private final String userID = "sa";
-    private final String password = "sa";
-    private static Connection con = null;
-    
-     public Connection getConnection()throws Exception {        
-        if(con != null)
-            return con;
-        String url = "jdbc:sqlserver://"+serverName+":"+portNumber +
-                ";databaseName="+dbName;//+"; integratedSecurity=true";
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        con = DriverManager.getConnection(url, userID, password);
-        return con;
+    protected Connection connection;
+    public DBContext()
+    {
+        //@Students: You are allowed to edit user, pass, url variables to fit 
+        //your system configuration
+        //You can also add more methods for Database Interaction tasks. 
+        //But we recommend you to do it in another class
+        // For example : StudentDBContext extends DBContext , 
+        //where StudentDBContext is located in dal package, 
+        try {
+            String user = "sa";
+            String pass = "123";
+            String url = "jdbc:sqlserver://MINH-CUONG:1433;databaseName=PRJ302_IoT1603";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(url, user, pass);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
     
 }

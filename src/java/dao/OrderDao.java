@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Order;
+import model.Product;
 
 /**
  *
@@ -132,6 +133,18 @@ public class OrderDao extends BaseDao<Order>{
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ans;
+    }
+    public void updatView(int id ){
+        try {
+            Order p = get(id);
+            int payID = p.getPaymentID()+1;
+            String sql ="UPDATE [Products_HE163037] SET [weight]  = " +payID+ " WHERE productID = " + id;
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.executeUpdate();
+            System.out.println("Success");
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
