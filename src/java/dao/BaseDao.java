@@ -4,17 +4,10 @@
  */
 package dao;
 
-import com.sun.javafx.font.PrismFontFile;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -29,9 +22,16 @@ public abstract class BaseDao<T> {
     }
     
     public PreparedStatement createPreparedStatement(String query, Object... params) throws SQLException {
-        PreparedStatement ps = con.prepareStatement(query);
-        for(int i=0;i<params.length;i++) {
-            ps.setObject(i+1, params[i]);
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(query);
+            for(int i=0;i<params.length;i++) {
+                ps.setObject(i+1, params[i]);
+            }
+        } catch (SQLException e) {
+            // Handle the exception
+        } finally {
+            closeResources(ps);
         }
         return ps;
     }
@@ -45,4 +45,13 @@ public abstract class BaseDao<T> {
     
     public abstract T get(int id); 
     
+    public void closeResources(PreparedStatement ps) {
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                // Handle or log the exception
+            }
+        }
+    }
 }
