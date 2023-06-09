@@ -26,8 +26,13 @@ public class DBContext {
         // For example : StudentDBContext extends DBContext , 
         //where StudentDBContext is located in dal package, 
         try {
+            //BEFORE:
             String user = "sa";
             String pass = "123456";
+            //AFTER:
+            //String user = System.getenv("DB_USERNAME");
+            //String pass = System.getenv("DB_PASSWORD");
+            //
             String url = "jdbc:sqlserver://localhost:1433;databaseName=PRJ302_IoT1603";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);

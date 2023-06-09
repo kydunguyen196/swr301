@@ -15,43 +15,52 @@ import java.util.List;
  * @param <T>
  */
 public abstract class BaseDao<T> {
+
     Connection con = null;
-    
+
     public BaseDao() throws Exception {
-        con = new DBContext().connection;        
+        con = new DBContext().connection;
     }
-    
+
     public PreparedStatement createPreparedStatement(String query, Object... params) throws SQLException {
+        //BEFORE:
+//        PreparedStatement ps = con.prepareStatement(query);
+//        for(int i=0;i<params.length;i++) {
+//            ps.setObject(i+1, params[i]);
+//        }
+//        return ps;
+        //AFTER:
+//        try ( PreparedStatement ps = con.prepareStatement(query)) {
+//            for (int i = 0; i < params.length; i++) {
+//                ps.setObject(i + 1, params[i]);
+//            }
+//            return ps;
+//        }
+    
+        //or Close in a finally clause:
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(query);
-            for(int i=0;i<params.length;i++) {
-                ps.setObject(i+1, params[i]);
+            for (int i = 0; i < params.length; i++) {
+                ps.setObject(i + 1, params[i]);
             }
-        } catch (SQLException e) {
-            // Handle the exception
+            return ps;
         } finally {
-            closeResources(ps);
-        }
-        return ps;
-    }
-    public abstract List<T> getAll();
-    
-    public abstract int insert(T obj);
-    
-    public abstract int update(T obj);
-    
-    public abstract int delete(int id);
-    
-    public abstract T get(int id); 
-    
-    public void closeResources(PreparedStatement ps) {
-        if (ps != null) {
-            try {
+            if (ps != null) {
                 ps.close();
-            } catch (SQLException e) {
-                // Handle or log the exception
             }
         }
+        //
     }
+
+    public abstract List<T> getAll();
+
+    public abstract int insert(T obj);
+
+    public abstract int update(T obj);
+
+    public abstract int delete(int id);
+
+    public abstract T get(int id);
+
 }

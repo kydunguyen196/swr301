@@ -90,8 +90,12 @@ public class RateDao extends BaseDao<Rate>{
             PreparedStatement ps = createPreparedStatement(query, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Rate rate = new Rate(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
-                return rate;
+                //BEFORE:
+//                Rate rate = new Rate(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+//                return rate;
+                //AFTER:
+                  return new Rate(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+                //
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,8 +109,12 @@ public class RateDao extends BaseDao<Rate>{
             PreparedStatement ps = createPreparedStatement(query, userID, productID, orderDetailId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Rate rate = new Rate(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
-                return rate;
+                //BEFORE:
+//                Rate rate = new Rate(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+//                return rate;
+                //AFTER:
+                  return new Rate(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+                //
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -148,8 +156,15 @@ public class RateDao extends BaseDao<Rate>{
             while (rs.next()) {
                 count = rs.getInt(1);
             }
-            
-            return sum/count;
+            //BEFORE:
+            //return sum/count;
+            //AFTER:
+            if (count != 0) {
+                return sum / count;
+            } else {
+                throw new ArithmeticException("Division by zero");
+            }
+            //
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
