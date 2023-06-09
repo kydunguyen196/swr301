@@ -24,21 +24,21 @@ public abstract class BaseDao<T> {
 
     public PreparedStatement createPreparedStatement(String query, Object... params) throws SQLException {
         //BEFORE:
-        PreparedStatement ps = con.prepareStatement(query);
-        for(int i=0;i<params.length;i++) {
-            ps.setObject(i+1, params[i]);
-        }
-        return ps;
-        //AFTER:
-//        try ( PreparedStatement ps = con.prepareStatement(query)) {
-//            for (int i = 0; i < params.length; i++) {
-//                ps.setObject(i + 1, params[i]);
-//            }
-//            return ps;
+//        PreparedStatement ps = con.prepareStatement(query);
+//        for(int i=0;i<params.length;i++) {
+//            ps.setObject(i+1, params[i]);
 //        }
+//        return ps;
+        //AFTER:
+        try ( PreparedStatement ps = con.prepareStatement(query)) {
+            for (int i = 0; i < params.length; i++) {
+                ps.setObject(i + 1, params[i]);
+            }
+            return ps;
+        }
     
         //or Close in a finally clause:
-//        PreparedStatement ps = null;
+//        PreparedStatement ps = null;!
 //        try {
 //            ps = con.prepareStatement(query);
 //            for (int i = 0; i < params.length; i++) {
