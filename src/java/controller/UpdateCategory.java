@@ -34,8 +34,10 @@ import model.Category;
 @MultipartConfig
 public class UpdateCategory extends HttpServlet {
     String getFile(String name, HttpServletRequest req) throws IOException, ServletException {
+        // Đường dẫn tuyệt đối có thể gây lỗi bảo mật
         String filePath = "C:\\Users\\Mido\\Documents\\NetBeansProjects\\MidoShop\\web\\img\\";
         Part filePart = req.getPart(name);
+        // Tiềm ẩn lỗi Null Pointer Exception nếu filePart là null
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         if (fileName == null || fileName.length() == 0) {
             return "";
@@ -44,16 +46,20 @@ public class UpdateCategory extends HttpServlet {
 
         File f = new File(filePath + fileName);
         OutputStream os = new FileOutputStream(f);
+        // Khai báo mảng byte với kích thước cố định có thể không hiệu quả
         byte[] buf = new byte[1024];
         int len;
         while ((len = fileContent.read(buf)) > 0) {
             os.write(buf, 0, len);
         }
+        // Thiếu xử lý ngoại lệ và đóng tài nguyên trong khối finally
         os.close();
         fileContent.close();
 
         return "img/" + fileName;
     }
+}
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
